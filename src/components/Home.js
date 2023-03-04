@@ -109,6 +109,7 @@ function Home() {
         {teacherArray.map((teacher, index) => (
           <div className="group2">
             <Card
+              ip={ip}
               key={index}
               name={teacher.teacher_name}
               subject={teacher.subject}
