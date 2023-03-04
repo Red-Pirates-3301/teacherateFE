@@ -1,0 +1,33 @@
+.star-rating {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.star {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.2em;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0% 38%, 37% 38%);
+}
+
+.star-rating .star {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-right: 0.2em;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.star-rating .star.filled {
+  background-color: gold;
+}
+
+.star-rating .star.half-filled {
+  background: linear-gradient(to right, gold 50%, #ccc 50%);
+}

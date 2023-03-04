@@ -1,0 +1,38 @@
+.home {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px;
+  min-height: 90vh;
+  overflow-x: hidden;
+}
+
+.main {
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  align-self: flex-start;
+}
+
+.empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.empty > p{
+  margin: 20px 20px;
+  width: auto;
+  min-width: 100px;
+  max-width: 300px;
+  text-align: center;
+  margin-top: -50px;
+}
+
+.none{
+  display: none;
+}
