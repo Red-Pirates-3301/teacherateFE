@@ -14,7 +14,6 @@ function Card({ip, name, subject, place, rating, id, number_of_ratings }) {
       </div>
       <Stars filledStars={rating} style={{ marginBottom: 0 }} />
       <Link to={`/teacher/${id}`}><button className="btn"> More info</button></Link>
-      {ip}
     </div>
   );
 }
