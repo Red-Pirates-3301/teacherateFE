@@ -12,13 +12,13 @@ function Home() {
 
   function getIP() {
     localStorage.removeItem('ip')
-    fetch("https://api.ipify.org?format=json")
-      .then((response) => response.json())
-      .then((data) => {
-        setIp(data.ip);
+    axios.get("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_ip")
+      .then((response) => {
+        let client_ip = response.data.client_ip
+        setIp(client_ip)
+        localStorage.setItem("ip", client_ip);
         retrieveAccount();
-      })
-      .catch((error) => console.error(error));
+      }).catch((error) => console.log(error))
   }
 
   function getCSRF() {
@@ -93,7 +93,6 @@ function Home() {
   }
 
   function runAll() {
-    localStorage.clear()
     getIP()
     getCSRF()
     getTeachers()    
