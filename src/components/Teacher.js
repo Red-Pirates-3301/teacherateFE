@@ -19,7 +19,7 @@ function Teacher() {
 
   useEffect(() => {
     axios
-      .post("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teacher", { id: id })
+      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teacher", { id: id })
       .then((response) => {
         setTeacher(JSON.parse(response.data));
       })
@@ -30,7 +30,7 @@ function Teacher() {
 
   function addRating() {
     axios
-      .post("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_rating", { userID: userID, teacher_id: id, rating: inputValue })
+      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_rating", { userID: userID, teacher_id: id, rating: inputValue })
       .then((response) => {
         console.log(response.data);
         window.location.replace("/");

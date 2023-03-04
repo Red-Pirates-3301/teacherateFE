@@ -8,7 +8,7 @@ function Home() {
   const [ip, setIp] = useState("");
   let userID = localStorage.getItem("userID");
   let search = localStorage.getItem("search");
-  const csrf_url = "https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_csrf";
+  const csrf_url = "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_csrf";
 
   function getIP() {
     localStorage.removeItem('ip')
@@ -37,7 +37,7 @@ function Home() {
   function addAccount() {
     
     axios
-      .post("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_account", { ip: ip })
+      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_account", { ip: ip })
       .then((response) => {
         localStorage.setItem("userID", response.data.userID)
       })
@@ -48,7 +48,7 @@ function Home() {
 
   function retrieveAccount() {
       axios
-      .post("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account", {
+      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account", {
         userID: userID,
         ip: ip,
       })
@@ -82,7 +82,7 @@ function Home() {
 
   function getTeachers() {
     axios
-      .get("https://teacherate-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teachers")
+      .get("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teachers")
       .then((response) => {
         setTeacherArray(JSON.parse(response.data));
         document.getElementById("empty").classList.add("none");

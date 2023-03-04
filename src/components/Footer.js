@@ -27,7 +27,7 @@ function Footer() {
         <br />
         <br />
           You don't agree with us, and want to find out who we are?&nbsp;
-        <a href="">This</a> might help.
+        <a href="https://comfy-souffle-325b7d.netlify.app/">This</a> might help.
         </p>
       </div>
     </div>
