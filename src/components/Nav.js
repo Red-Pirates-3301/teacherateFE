@@ -5,6 +5,7 @@ function Nav() {
   return (
     <div className="nav">
       <div className="svg">
+        <a href="/">
         <svg
           width="100%"
           height="100%"
@@ -19,6 +20,7 @@ function Nav() {
             fill="#C00000"
           />
         </svg>
+        </a>
       </div>
       {/* <div className="search"><input className="searchBar" type="text" name="" id=""  placeholder="Search for a teacher"/></div> */}
     </div>

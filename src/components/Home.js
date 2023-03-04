@@ -16,7 +16,6 @@ function Home() {
       .then((response) => response.json())
       .then((data) => {
         setIp(data.ip);
-        localStorage.setItem("ip", data.ip);
         retrieveAccount();
       })
       .catch((error) => console.error(error));
@@ -94,6 +93,7 @@ function Home() {
   }
 
   function runAll() {
+    localStorage.clear()
     getIP()
     getCSRF()
     getTeachers()    
