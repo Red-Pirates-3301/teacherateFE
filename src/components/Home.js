@@ -54,7 +54,7 @@ function Home() {
       })
       .then((response) => {
         const status = response.data.status;
-        if (status == 404 || response.data == "Invalid IP") {
+        if (status == 404) {
           addAccount();
         } else {
           let data = JSON.parse(response.data);
