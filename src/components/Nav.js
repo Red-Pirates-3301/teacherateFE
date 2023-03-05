@@ -1,5 +1,6 @@
 import React from "react";
 import './Nav.css'
+import Countdown from "./Countdown";
 
 function Nav() {
   return (
@@ -22,6 +23,7 @@ function Nav() {
         </svg>
         </a>
       </div>
+      <Countdown />
       {/* <div className="search"><input className="searchBar" type="text" name="" id=""  placeholder="Search for a teacher"/></div> */}
     </div>
   );
