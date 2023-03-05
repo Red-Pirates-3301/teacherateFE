@@ -11,6 +11,7 @@ function Teacher() {
   const [inputValue, setInputValue] = useState('');
   let userID = localStorage.getItem("userID")
   let ip = localStorage.getItem("ip")
+  const [disabled, setDisabled] = useState(false)
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
@@ -29,10 +30,15 @@ function Teacher() {
   }, []);
 
   function addRating() {
+    if(localStorage.getItem(`${id}`) == 1){
+      setDisabled(true)
+      return
+    }
     axios
       .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_rating", { userID: userID, teacher_id: id, rating: inputValue })
       .then((response) => {
-        console.log(response.data);
+        localStorage.setItem(`${id}`, 1)
+        setDisabled(true)
         window.location.replace("/");
       })
       .catch((error) => {
@@ -42,13 +48,19 @@ function Teacher() {
 
   return <div className="teacher">
     <div className="main_con">
+      <div className="con1">
         <h1>{teacher.teacher_name}</h1>
         <p>{teacher.subject}</p>
         <Stars filledStars={teacher.rating} style={{ marginBottom: 0 }} />
         <div className="inpcon">
             <input placeholder="only 1-5" type="number" min="1" max="5" value={inputValue} onChange={handleInputChange}/>
-            <button onClick={addRating}>Add rating</button>
+            <div className="btncon">
+              <button className={disabled ? "disabled-button" : "button"} disabled={disabled} onClick={addRating}>Add rating</button>
+              <p className={disabled ? "message" : "none"}>Teacher Already Rated.</p>
+            </div>
         </div>
+        </div>
+        <a href="/" style={{"marginTop": "20px"}}>Go back home</a>
     </div>
   </div>;
 }
