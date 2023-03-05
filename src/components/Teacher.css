@@ -10,12 +10,19 @@
 .main_con{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
     box-shadow: 0px 0px 20px #ececec;
     width: 90%;
-    height: 90%;
-    gap: 10px;
+    height: 95%;
+    gap: 30px;
+}
+
+.con1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .inpcon{
@@ -32,9 +39,19 @@
     width: 70px;
     height: 50px;
     border-radius: 5px;
+    padding-left: 10px;
 }
 
-.inpcon>button{
+.btncon{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    width: auto;
+    gap: 20px;
+}
+
+.button{
     border: none;
     background-color: rgb(0, 123, 255);
     padding: 10px 10px;
@@ -43,8 +60,46 @@
     width: 90px;
 }
 
+.none {
+    display: none;
+}
+
+.message {
+    color: red;
+}
+
+
+.disabled-button {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    width: 90px;
+  }  
+
 @media screen and (max-width: 1000px) {
     .main_con>h1{
         font-size: 20px;
-    }   
+    }
+
+    .inpcon{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        width: auto;
+        gap: 20px;
+    }
+
+    .btncon{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        width: auto;
+        gap: 5px;
+    }
 }
+
