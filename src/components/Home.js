@@ -7,11 +7,13 @@ function Home() {
   const [teacherArray, setTeacherArray] = useState([]);
   const [ip, setIp] = useState("");
   let userID = localStorage.getItem("userID");
-  let search = localStorage.getItem("search");
-  const csrf_url = "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_csrf";
+  const [searchQuery, setSearchQuery] = useState("");
+  const csrf_url =
+    "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_csrf";
+  const search = localStorage.getItem("searchQuery");
 
   function getIP() {
-    localStorage.removeItem('ip')
+    localStorage.removeItem("ip");
     fetch("https://api.ipify.org?format=json")
       .then((response) => response.json())
       .then((data) => {
@@ -23,7 +25,7 @@ function Home() {
   }
 
   function getCSRF() {
-    localStorage.removeItem('csrf')
+    localStorage.removeItem("csrf");
     axios
       .get(csrf_url)
       .then((response) => {
@@ -35,11 +37,13 @@ function Home() {
   }
 
   function addAccount() {
-    
     axios
-      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_account", { ip: ip })
+      .post(
+        "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/add_account",
+        { ip: ip }
+      )
       .then((response) => {
-        localStorage.setItem("userID", response.data.userID)
+        localStorage.setItem("userID", response.data.userID);
       })
       .catch((error) => {
         console.log(error);
@@ -47,11 +51,14 @@ function Home() {
   }
 
   function retrieveAccount() {
-      axios
-      .post("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account", {
-        userID: userID,
-        ip: ip,
-      })
+    axios
+      .post(
+        "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account",
+        {
+          userID: userID,
+          ip: ip,
+        }
+      )
       .then((response) => {
         const status = response.data.status;
         if (status == 404) {
@@ -66,23 +73,24 @@ function Home() {
       });
   }
 
-  useEffect(()=>{
-    let ip_local = localStorage.getItem("ip")
+  useEffect(() => {
+    let ip_local = localStorage.getItem("ip");
     function isIPAddress(str) {
       const regex = /^([0-9]{1,3}\.){3}[0-9]{1,3}$/;
       return regex.test(str);
     }
 
-    if(isIPAddress(ip_local)){
-      localStorage.removeItem('userID')
-      retrieveAccount()
+    if (isIPAddress(ip_local)) {
+      localStorage.removeItem("userID");
+      retrieveAccount();
     }
-  }, [localStorage.getItem("ip")])
-
+  }, [localStorage.getItem("ip")]);
 
   function getTeachers() {
     axios
-      .get("https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teachers")
+      .get(
+        "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/get_teachers"
+      )
       .then((response) => {
         setTeacherArray(JSON.parse(response.data));
         document.getElementById("empty").classList.add("none");
@@ -94,32 +102,53 @@ function Home() {
   }
 
   function runAll() {
-    getIP()
-    getCSRF()
-    getTeachers()    
+    getIP();
+    getCSRF();
+    getTeachers();
   }
 
-  useEffect(()=>{
-    runAll()
-  }, [])
+  useEffect(() => {
+    runAll();
+  }, []);
+
+  const filteredDocuments = teacherArray.filter((teacher) => {
+    return teacher.teacher_name
+      .toLowerCase()
+      .includes(search.toLowerCase());
+  });
 
   return (
     <div className="home">
       <div id="none">
-        {teacherArray.map((teacher, index) => (
-          <div className="group2">
-            <Card
-              ip={ip}
-              key={index}
-              name={teacher.teacher_name}
-              subject={teacher.subject}
-              place={teacher.place}
-              rating={teacher.rating}
-              id={teacher.id}
-              number_of_ratings={teacher.number_of_ratings}
-            />
-          </div>
-        ))}
+        {search == "" || search == undefined || search == null
+          ? teacherArray.map((teacher, index) => (
+              <div className="group2">
+                <Card
+                  ip={ip}
+                  key={index}
+                  name={teacher.teacher_name}
+                  subject={teacher.subject}
+                  place={teacher.place}
+                  rating={teacher.rating}
+                  id={teacher.id}
+                  number_of_ratings={teacher.number_of_ratings}
+                />
+              </div>
+            ))
+          : filteredDocuments.map((teacher, index) => (
+              <div className="group2">
+                <Card
+                  ip={ip}
+                  key={index}
+                  name={teacher.teacher_name}
+                  subject={teacher.subject}
+                  place={teacher.place}
+                  rating={teacher.rating}
+                  id={teacher.id}
+                  number_of_ratings={teacher.number_of_ratings}
+                />
+              </div>
+            ))}
       </div>
       <div id="empty" className="empty">
         <img
