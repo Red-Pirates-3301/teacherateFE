@@ -25,6 +25,12 @@
     flex-direction: column;
 }
 
+#h1{
+    padding: 0px 5px;
+    text-align: center;
+    align-items: center;
+}
+
 .inpcon{
     display: flex;
     align-items: center;
