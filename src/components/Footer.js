@@ -22,12 +22,18 @@ function Footer() {
 
       </div>
       <div className="part2">
+      <img src={require("../assets/download.png")} alt="" style={{width: "200px", height: "200px"}}/>
+      </div>
+      <div className="part2">
         <img src={require("../assets/text-1677332202696.png")} alt="" />
-        <p>~We believe in the freedom of thoughts and opinions.<br />~We believe that students should have the right to decide what's best.<br />~We believe that we will make a change.<br />~We are the Red Pirates
+        {/* <p>~We believe in the freedom of thoughts and opinions.<br />~We believe that students should have the right to decide what's best.<br />~We believe that we will make a change.<br />~We are the Red Pirates
         <br />
         <br />
           You don't agree with us, and want to find out who we are?&nbsp;
         <a href="https://comfy-souffle-325b7d.netlify.app/">This</a> might help.
+        </p> */}
+        <p id="p">
+          everywhere <br />
         </p>
       </div>
     </div>
