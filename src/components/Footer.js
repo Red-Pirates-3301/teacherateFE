@@ -21,7 +21,7 @@ function Footer() {
         </svg>
 
       </div>
-      <div className="part2">
+      <div className="part3">
       <img src={require("../assets/download.png")} alt="" style={{width: "200px", height: "200px"}}/>
       </div>
       <div className="part2">
