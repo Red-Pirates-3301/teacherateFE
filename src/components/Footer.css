@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+
 .footer {
   display: flex;
   flex-direction: row;
@@ -29,6 +31,11 @@
   text-align: center;
   margin-top: 20px;
   width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-direction: column;
 }
 
 .part2 img {
@@ -75,4 +82,12 @@
     text-align: start;
     width: 270px;
   }
+}
+
+#p{
+  font-size: 25px;
+  font-family: 'Pirata One', cursive;
+  color: rgb(99, 99, 99);
+  letter-spacing: 10px;
+ font-weight: 200; 
 }
