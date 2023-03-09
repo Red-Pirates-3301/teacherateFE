@@ -55,7 +55,6 @@ function Home() {
       .post(
         "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account",
         {
-          userID: userID,
           ip: ip,
         }
       )
