@@ -55,6 +55,7 @@ function Home() {
       .post(
         "https://teacherate-be-git-red-pirates-dev.apps.sandbox-m2.ll9k.p1.openshiftapps.com/api/retrieve_account",
         {
+          userID: userID,
           ip: ip,
         }
       )
@@ -134,9 +135,7 @@ function Home() {
                 />
               </div>
             ))
-          : (filteredDocuments != "" ? (setTimeout(() => {
-              localStorage.setItem("searchQuery", "")
-            }, 3000), filteredDocuments.map((teacher, index) => (
+          : filteredDocuments.map((teacher, index) => (
               <div className="group2">
                 <Card
                   ip={ip}
@@ -149,9 +148,7 @@ function Home() {
                   number_of_ratings={teacher.number_of_ratings}
                 />
               </div>
-            ))): (setTimeout(() => {
-              localStorage.setItem("searchQuery", "")
-            }, 3000), <p>No teacher with this name was found :(</p>))}
+            ))}
       </div>
       <div id="empty" className="empty">
         <img
