@@ -135,7 +135,9 @@ function Home() {
                 />
               </div>
             ))
-          : filteredDocuments.map((teacher, index) => (
+          : (filteredDocuments != "" ? (setTimeout(() => {
+              localStorage.setItem("searchQuery", "")
+            }, 3000), filteredDocuments.map((teacher, index) => (
               <div className="group2">
                 <Card
                   ip={ip}
@@ -148,7 +150,9 @@ function Home() {
                   number_of_ratings={teacher.number_of_ratings}
                 />
               </div>
-            ))}
+            ))): (setTimeout(() => {
+              localStorage.setItem("searchQuery", "")
+            }, 3000), <p>No teacher with this name was found :(</p>))}
       </div>
       <div id="empty" className="empty">
         <img
